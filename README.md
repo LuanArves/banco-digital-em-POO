@@ -1,4 +1,4 @@
-💰 # Digital Bank 💻
+# 💰 Digital Bank 💻
 
 ## Repository for developing a DIO challenge project for a digital bank using the JAVA language. ☕
 
