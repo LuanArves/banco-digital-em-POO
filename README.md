@@ -1,9 +1,14 @@
-# Banco digital 
+# Digital Bank
 
-## Repositorio para o desenvolvimento de um projeto de desafio da DIO de um banco digital utilizando a linguagem JAVA
+## Repository for developing a DIO challenge project for a digital bank using the JAVA language.
 
 
-### O banco deverá fazer : 
- - Cadastro da conta do cliente.
- - Fazer transações (transferencias, saques)
- - Exibir o extrato completo de todas as transações com suas respectivas datas e informações
+### The bank should: : 
+
+Register the customer's account.
+Perform transactions (transfers, withdrawals).
+Display the complete statement of all transactions with their respective dates and information.
+
+
+
+
