@@ -1,2 +1,13 @@
-# banco-digital-em-POO
-Repositorio para o desenvolvimento de um projeto de desafio da DIO de um banco digital utilizando a linguagem JAVA
+# 💰 Digital Bank 💻
+
+## Repository for developing a DIO challenge project for a digital bank using the JAVA language. ☕
+
+
+### The bank should : 
+ - 📝 Register the customer's account.
+ - 💸 Perform transactions (transfers, withdrawals).
+ - 📋 Display the complete statement of all transactions with their respective dates and information.
+
+
+
+
