@@ -2,13 +2,15 @@ package Interfaces;
 import AccountsClass.Account;
 import AccountsClass.Transaction;
 
+import java.time.LocalTime;
+
 public interface iAccount {
 
-    public double displayBalance();
-    public double withdraw(double saldo);
-    public double transfer(Account account, double balance);
-    public double deposit(double balance);
-    public void addTransaction(Transaction transaction);
+    public void displayBalance();
+    public void withdraw(double saldo);
+    public void transfer(Account account, double balance);
+    public void deposit(double balance);
+    public void addTransaction(LocalTime hourDate, String id, String description, double valor);
 
 
 }

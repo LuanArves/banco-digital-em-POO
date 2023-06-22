@@ -1,5 +1,8 @@
 package AccountsClass;
 import Interfaces.iAccount;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 public class Account implements iAccount {
@@ -19,24 +22,28 @@ public class Account implements iAccount {
 
     //Especial Methods
     @Override
-    public double displayBalance() {
-        return 0;
-    }
-    @Override
-    public double withdraw(double saldo) {
-        return 0;
-    }
-    @Override
-    public double transfer(Account account, double balance) {
-        return 0;
-    }
-    @Override
-    public double deposit(double balance) {
-        return 0;
-    }
-    @Override
-    public void addTransaction(Transaction transaction) {
+    public void displayBalance() {
 
+    }
+    @Override
+    public void withdraw(double saldo) {
+
+    }
+    @Override
+    public void transfer(Account account, double balance) {
+        account.deposit(balance);
+        saldo -= balance;
+        setSaldo(saldo);
+    }
+    @Override
+    public void deposit(double balance) {
+        balance += this.saldo;
+        setSaldo(balance);
+    }
+    @Override
+    public void addTransaction(LocalTime hourDate, String id, String description, double valor){
+        Transaction transaction = new Transaction(hourDate, id, description, valor);
+        listaTransacao.add(transaction);
     }
     //Getters and setters
     public void setSaldo(double saldo) {
