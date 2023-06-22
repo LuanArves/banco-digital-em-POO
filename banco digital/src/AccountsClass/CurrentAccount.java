@@ -1,11 +1,10 @@
 package AccountsClass;
 
 public class CurrentAccount extends Account {
-
     private double overdraft;
 
-    public CurrentAccount(String id, int numero_conta, int numero_agencia, double saldo) {
-        super(id, numero_conta, numero_agencia, saldo);
+    public CurrentAccount(String id, double saldo) {
+        super(id, saldo);
         this.overdraft = 30.0;
     }
 

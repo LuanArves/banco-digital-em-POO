@@ -10,7 +10,7 @@ public interface iAccount {
     public void withdraw(double saldo);
     public void transfer(Account account, double balance);
     public void deposit(double balance);
-    public void addTransaction(LocalTime hourDate, String id, String description, double valor);
+    public void addTransaction(Transaction transactions);
 
 
 }

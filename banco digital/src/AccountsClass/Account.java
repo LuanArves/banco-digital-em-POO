@@ -7,15 +7,23 @@ import java.util.ArrayList;
 
 public class Account implements iAccount {
 
+    private static int SEQUEL = 1;
+    private static int AGENCIAPADRAO = 22341;
+
+
     private String id;
-    private int numero_conta, numero_agencia;
+    protected int numero_conta, numero_agencia;
     private double saldo;
     private ArrayList<Transaction> listaTransacao;
 
-    public Account(String id, int numero_conta, int numero_agencia, double saldo) {
+    LocalDate hourDate = LocalDate.now();
+    String id2;
+    String description;
+
+    public Account(String id, double saldo) {
         this.id = id;
-        this.numero_conta = numero_conta;
-        this.numero_agencia = numero_agencia;
+        this.numero_conta = SEQUEL++;
+        this.numero_agencia = Account.AGENCIAPADRAO;
         this.saldo = saldo;
         this.listaTransacao = new ArrayList<>();
     }
@@ -23,28 +31,56 @@ public class Account implements iAccount {
     //Especial Methods
     @Override
     public void displayBalance() {
-
+        System.out.println("Saldo atual da conta : " + this.getSaldo() + "Reais");
     }
     @Override
-    public void withdraw(double saldo) {
-
+    public void withdraw(double valor) {
+        double valor2 = 0.0;
+        valor2 = this.saldo - valor;
+        setSaldo(valor2);
+        description = "Saque de " + valor2;
+        Transaction transaction = new Transaction(hourDate, id2, description);
+        addTransaction(transaction);
     }
     @Override
     public void transfer(Account account, double balance) {
         account.deposit(balance);
         saldo -= balance;
         setSaldo(saldo);
+        description = "Transferencia de " + balance;
+        Transaction transaction = new Transaction(hourDate, id2, description);
+        addTransaction(transaction);
     }
     @Override
     public void deposit(double balance) {
-        balance += this.saldo;
-        setSaldo(balance);
+       this.saldo += balance;
+        setSaldo(saldo);
+        description = "Deposito de " + balance;
+        Transaction transaction = new Transaction(hourDate, id2, description);
+        addTransaction(transaction);
     }
     @Override
-    public void addTransaction(LocalTime hourDate, String id, String description, double valor){
-        Transaction transaction = new Transaction(hourDate, id, description, valor);
-        listaTransacao.add(transaction);
+    public void addTransaction(Transaction transactions){
+        listaTransacao.add(transactions);
     }
+
+    public String toString() {
+        if (listaTransacao.isEmpty()){
+
+            return "Id conta : " + this.getId() +
+                    "Numero conta : " + this.getNumero_conta() +
+                    "Agencia : " + this.getNumero_agencia() +
+                    "Saldo atual : " + this.getSaldo() +
+                    "Transações realizadas : " + "Não foi realizada nenhuma transação";
+        }else {
+            return "Id conta : " + this.getId() +
+                    "Numero conta : " + this.getNumero_conta() +
+                    "Agencia : " + this.getNumero_agencia() +
+                    "Saldo atual : " + this.getSaldo() +
+                    "Transações realizadas : " + getListaTransacao();
+        }
+    }
+
     //Getters and setters
     public void setSaldo(double saldo) {
         this.saldo = saldo;
@@ -69,6 +105,4 @@ public class Account implements iAccount {
     public ArrayList<Transaction> getListaTransacao() {
         return listaTransacao;
     }
-
-
 }

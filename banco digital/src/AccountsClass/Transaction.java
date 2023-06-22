@@ -1,22 +1,29 @@
 package AccountsClass;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class Transaction {
 
-    private LocalTime hourDate;
+    private LocalDate hourDate ;
     private String id;
     private String description;
-    private double valor;
 
-    public Transaction(LocalTime hourDate, String id, String description, double valor) {
-        this.hourDate = hourDate;
+
+    public Transaction(LocalDate hourDate, String id, String description) {
+        this.hourDate = LocalDate.now();
         this.id = id;
         this.description = description;
-        this.valor = valor;
     }
 
-    public LocalTime getHourDate() {
+    public String toString(){
+        return "Data : " + getHourDate() +
+                "id : " + getId() +
+                "Descrição : " + getDescription();
+
+    }
+
+    public LocalDate getHourDate() {
         return hourDate;
     }
 
@@ -28,7 +35,4 @@ public class Transaction {
         return description;
     }
 
-    public double getValor() {
-        return valor;
-    }
 }
