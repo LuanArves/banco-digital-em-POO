@@ -1,14 +1,15 @@
 package AccountsClass;
 import Interfaces.iAccount;
-
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Random;
+
 
 public class Account implements iAccount {
 
     private static int SEQUEL = 1;
     private static int AGENCIAPADRAO = 22341;
+
 
 
     private String id;
@@ -20,15 +21,28 @@ public class Account implements iAccount {
     String id2;
     String description;
 
+
+
     public Account(String id, double saldo) {
-        this.id = id;
-        this.numero_conta = SEQUEL++;
+        this.id = generateIDnumber();
+        this.numero_conta = SEQUEL++; //When a new object are create begins + 1
         this.numero_agencia = Account.AGENCIAPADRAO;
         this.saldo = saldo;
         this.listaTransacao = new ArrayList<>();
     }
 
     //Especial Methods
+    private String generateIDnumber(){
+        Random idNumber = new Random();
+        StringBuilder sb = new StringBuilder();
+
+        for (int i=0; i < 4; i++){
+            int number = idNumber.nextInt(10);
+            sb.append(number);
+        }
+
+        return sb.toString();
+    }
     @Override
     public void displayBalance() {
         System.out.println("Saldo atual da conta : " + this.getSaldo() + "Reais");
@@ -66,7 +80,6 @@ public class Account implements iAccount {
 
     public String toString() {
         if (listaTransacao.isEmpty()){
-
             return "Id conta : " + this.getId() +
                     "Numero conta : " + this.getNumero_conta() +
                     "Agencia : " + this.getNumero_agencia() +

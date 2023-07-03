@@ -19,7 +19,10 @@ public class Statement implements iStatement{
 
     @Override
     public void generateStatenent() {
-        System.out.println(costumerAccount);
+        /*try {
+
+        }catch ();
+         */
     }
 
 

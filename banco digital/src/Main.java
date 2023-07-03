@@ -31,7 +31,9 @@ public class Main {
             }
         }
 
-        conta2.transfer(conta1, 200.0);
+        conta2.transfer(conta1, 300.0);
+        conta2.transfer(conta1, 500.0);
+
 
 
         System.out.println(usuario);
