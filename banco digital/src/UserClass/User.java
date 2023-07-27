@@ -2,7 +2,9 @@ package UserClass;
 
 import AccountsClass.Account;
 
-public class User {
+import java.io.*;
+
+public class User implements Serializable {
 
     private String idCostumer;
     private String name, occupation;
@@ -25,6 +27,23 @@ public class User {
                 "Conta : " + this.getAccount();
     }
 
+    public void gerarExtrato(){
+
+        try {
+
+            FileOutputStream fileout = new FileOutputStream("C:\\temp\\in.txt");
+            ObjectOutputStream userOut = new ObjectOutputStream(fileout);
+            userOut.writeObject(this); // grava o proprio objeto da classe User
+            userOut.close();
+
+            System.out.println("Extrato gerado com sucesso!");
+
+        }catch (IOException e){
+            System.out.println("Erro ao gravar informações do usuario : " + e.getMessage());
+        }
+
+
+    }
     public Account getAccount() {
         return account;
     }

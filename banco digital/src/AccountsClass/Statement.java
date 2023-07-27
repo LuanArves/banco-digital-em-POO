@@ -1,5 +1,7 @@
 package AccountsClass;
 import Interfaces.iStatement;
+import UserClass.User;
+
 import java.time.LocalDate;
 
 public class Statement implements iStatement{
@@ -19,10 +21,7 @@ public class Statement implements iStatement{
 
     @Override
     public void generateStatenent() {
-        /*try {
 
-        }catch ();
-         */
     }
 
 

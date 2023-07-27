@@ -33,13 +33,13 @@ public class Main {
 
         conta2.transfer(conta1, 300.0);
         conta2.transfer(conta1, 500.0);
+        usuario.gerarExtrato();
 
 
 
         System.out.println(usuario);
 
 
-        System.out.println(conta1);
 
 
 
