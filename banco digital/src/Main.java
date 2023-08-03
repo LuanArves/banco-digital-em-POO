@@ -17,7 +17,7 @@ public class Main {
 
         Aaddress end = new Aaddress("Rua las vegas", "34", "Novo mundo", "Uberlandia");
         User usuario = new User("3", "Joao", "Desempregado", end, conta2);
-
+        User usario2 = new User("4","Luan", "Vagabundo", end, conta1);
         conta2.deposit(500.0);
         conta2.deposit(600.0);
 
@@ -33,11 +33,13 @@ public class Main {
 
         conta2.transfer(conta1, 300.0);
         conta2.transfer(conta1, 500.0);
-        usuario.gerarExtrato();
+
+        usario2.gerarExtrato();
+        //usuario.gerarExtrato();
 
 
 
-        System.out.println(usuario);
+        //System.out.println(usuario);
 
 
 

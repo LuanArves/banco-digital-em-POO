@@ -3,6 +3,9 @@ package UserClass;
 import AccountsClass.Account;
 
 import java.io.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Scanner;
 
 public class User implements Serializable {
 
@@ -27,22 +30,43 @@ public class User implements Serializable {
                 "Conta : " + this.getAccount();
     }
 
+    public void leituraExtrato(){
+
+    }
     public void gerarExtrato(){
+        Scanner teclado = new Scanner(System.in);
 
-        try {
+        String idCostumer = getIdCostumer();
+        String name = getName();
+        String occupation = getOccupation();
+        String address = getAddress().toString();
+        String accountInfo = getAccount().toString();
 
-            FileOutputStream fileout = new FileOutputStream("C:\\temp\\in.txt");
-            ObjectOutputStream userOut = new ObjectOutputStream(fileout);
-            userOut.writeObject(this); // grava o proprio objeto da classe User
-            userOut.close();
+        String fileData = idCostumer + "," + name + "," + occupation + "," + address + "," + accountInfo;
 
-            System.out.println("Extrato gerado com sucesso!");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss");
+        String timestamp = dateFormat.format(new Date());
+        String fileName = "statement_" + timestamp + ".csv";
 
+
+
+        File sourceFile = new File("C:\\ProjetosJava");
+            String sourceFolderStr = sourceFile.getPath();
+            boolean success = new File(sourceFolderStr + "/files").mkdir();
+
+            String targetFileStr = sourceFolderStr + "/files/statement.csv";
+
+            if (targetFileStr!=null){
+                targetFileStr = sourceFolderStr + "/files" + fileName;
+            }
+        try(BufferedWriter bw = new  BufferedWriter(new FileWriter(targetFileStr))){
+            bw.write(fileData);
+            bw.newLine();
         }catch (IOException e){
-            System.out.println("Erro ao gravar informações do usuario : " + e.getMessage());
+            System.out.println("Erro ao escrever o arquivo : " + e.getMessage());
         }
 
-
+        teclado.close();
     }
     public Account getAccount() {
         return account;

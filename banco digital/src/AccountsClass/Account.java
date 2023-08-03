@@ -7,6 +7,7 @@ import java.util.Random;
 
 public class Account implements iAccount {
 
+    // definindo alguns valores padrões
     private static int SEQUEL = 1;
     private static int AGENCIAPADRAO = 22341;
 
@@ -28,7 +29,7 @@ public class Account implements iAccount {
         this.numero_conta = SEQUEL++; //When a new object are create begins + 1
         this.numero_agencia = Account.AGENCIAPADRAO;
         this.saldo = saldo;
-        this.listaTransacao = new ArrayList<>();
+        this.listaTransacao = new ArrayList<>();//inicializando o arraylist
     }
 
     //Especial Methods
