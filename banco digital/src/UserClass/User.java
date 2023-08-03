@@ -54,12 +54,9 @@ public class User implements Serializable {
             String sourceFolderStr = sourceFile.getPath();
             boolean success = new File(sourceFolderStr + "/files").mkdir();
 
-            String targetFileStr = sourceFolderStr + "/files/statement.csv";
+            String targetFileStr = sourceFolderStr + "/files/" + fileName;
 
-            if (targetFileStr!=null){
-                targetFileStr = sourceFolderStr + "/files" + fileName;
-            }
-        try(BufferedWriter bw = new  BufferedWriter(new FileWriter(targetFileStr))){
+        try(BufferedWriter bw = new  BufferedWriter(new FileWriter(targetFileStr))){ //Gravando o objeto usuario em um arquivo so tipo csv.
             bw.write(fileData);
             bw.newLine();
         }catch (IOException e){
