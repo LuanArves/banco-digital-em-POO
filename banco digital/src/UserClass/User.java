@@ -31,31 +31,33 @@ public class User implements Serializable {
     }
 
     public void leituraExtrato(){
+        Scanner Teclado = new Scanner(System.in);
+
 
     }
     public void gerarExtrato(){
         Scanner teclado = new Scanner(System.in);
-
+        //Organizando a saida do objeto
         String idCostumer = getIdCostumer();
         String name = getName();
         String occupation = getOccupation();
         String address = getAddress().toString();
         String accountInfo = getAccount().toString();
-
         String fileData = idCostumer + "," + name + "," + occupation + "," + address + "," + accountInfo;
 
+        //Inserindo uma data para diferenciar diversos arquivos gerados
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss");
         String timestamp = dateFormat.format(new Date());
-        String fileName = "statement_" + timestamp + ".csv";
+        String fileName = "statement_" + getName() +"_"+ timestamp + ".csv";
 
 
-
+        //criando a pasta e o arquivo de txt/csv
         File sourceFile = new File("C:\\ProjetosJava");
             String sourceFolderStr = sourceFile.getPath();
             boolean success = new File(sourceFolderStr + "/files").mkdir();
-
             String targetFileStr = sourceFolderStr + "/files/" + fileName;
 
+        //Escrevendo no arquivo
         try(BufferedWriter bw = new  BufferedWriter(new FileWriter(targetFileStr))){ //Gravando o objeto usuario em um arquivo so tipo csv.
             bw.write(fileData);
             bw.newLine();
