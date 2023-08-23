@@ -10,9 +10,6 @@ public class Account implements iAccount {
     // definindo alguns valores padrões
     private static int SEQUEL = 1;
     private static int AGENCIAPADRAO = 22341;
-
-
-
     private String id;
     protected int numero_conta, numero_agencia;
     private double saldo;
@@ -24,7 +21,7 @@ public class Account implements iAccount {
 
 
 
-    public Account(String id, double saldo) {
+    public Account(double saldo) {
         this.id = generateIDnumber();
         this.numero_conta = SEQUEL++; //When a new object are create begins + 1
         this.numero_agencia = Account.AGENCIAPADRAO;
